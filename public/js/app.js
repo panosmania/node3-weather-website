@@ -1,4 +1,4 @@
-console.log("client side javascript file is loaded ");
+//console.log("client side javascript file is loaded ");
 
 /* We'll be using the very popular fetch API that is not part of JavaScript.
 
