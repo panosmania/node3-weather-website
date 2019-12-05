@@ -19,12 +19,19 @@ const forecast = (latitude, longitude, callback) => {
     } else if (body.error) {
       callback("unable to find location", undefined);
     } else {
+      //console.log(body.daily.data[0].temperatureHigh);
+      //console.log(body.daily.data[0].temperatureLow);
+
       callback(
         undefined,
         body.daily.data[0].summary + //response.body.daily.data[0].summary +
         " it is currently " +
         body.currently.temperature + //response.body.currently.temperature +
-        " celcius out. there is a " +
+        " celcius out. this HIGH today is " +
+        body.daily.data[0].temperatureHigh +
+        " with a low of " +
+        body.daily.data[0].temperatureLow +
+        ". there is a " +
         body.currently.precipProbability + //response.body.currently.precipProbability +
           "% chance of rain"
       );
