@@ -38,22 +38,22 @@ app.use(express.static(publicDirectoryPath));
 app.get("", (req, res) => {
   res.render("index", {
     title: "weather app",
-    name: "Andrew Mead"
+    name: "Panagiotis Tserpes",
   });
 });
 
 app.get("/about", (req, res) => {
   res.render("about", {
     title: "about me",
-    name: "panagiotis"
+    name: "Panagiotis Tserpes",
   });
 });
 
 app.get("/help", (req, res) => {
   res.render("help", {
-    helpText: "iam malakas",
-    title: "helppppp",
-    name: "panagiotis"
+    helpText: "Email Contact : panostser@yahoo.gr",
+    title: "help",
+    name: "panagiotis tserpes",
   });
 });
 
@@ -82,7 +82,7 @@ app.get("/help", (req, res) => {
 app.get("/weather", (req, res) => {
   if (!req.query.address) {
     return res.send({
-      error: "you must provide a address term"
+      error: "you must provide a address term",
     });
   }
   /* //αν μπει χωρις αυτο = {} τοτε αμα βαλεις κατι ακυρο στο search πχ ! τοτε βγαζει error με αυτο σ εμφανιζει το σωστο μηνυμα και δεν βγαζει error.ΔΗΛΑΔΗ κανει search=! βλεπει καλει την error αλλα επειδη η { latitude, longitude, location } ειναι με destructuring εμφανιζει error οποτε με αυτον τον τροπο δουλευει σωστα video 56 */
@@ -92,7 +92,7 @@ app.get("/weather", (req, res) => {
       if (error) {
         return res.send({
           //error :error
-          error
+          error,
         });
       }
       forecast(latitude, longitude, (error, forecastData) => {
@@ -102,7 +102,7 @@ app.get("/weather", (req, res) => {
         res.send({
           forecast: forecastData,
           location: location,
-          address: req.query.address
+          address: req.query.address,
         });
       });
     }
@@ -119,13 +119,13 @@ app.get("/weather", (req, res) => {
 app.get("/products", (req, res) => {
   if (!req.query.search) {
     return res.send({
-      error: "you must provide a search term"
+      error: "you must provide a search term",
     });
   }
   console.log(req.query.search);
 
   res.send({
-    products: []
+    products: [],
   });
 });
 
@@ -142,7 +142,7 @@ app.get("/help/*", (req, res) => {
   res.render("404", {
     title: "404",
     name: "panagiotis",
-    errorMessage: "help article not found"
+    errorMessage: "help article not found",
   });
 });
 
@@ -152,7 +152,7 @@ app.get("*", (req, res) => {
   res.render("404", {
     title: "404",
     name: "panagiotis",
-    errorMessage: "page not found"
+    errorMessage: "page not found",
   });
 });
 
